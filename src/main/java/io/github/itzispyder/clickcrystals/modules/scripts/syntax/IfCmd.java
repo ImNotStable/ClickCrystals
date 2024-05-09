@@ -173,6 +173,9 @@ public class IfCmd extends ScriptCommand implements Global {
             case CHANCE_OF -> {
                 return pair(Math.random() * 100 < args.get(i + 1).toDouble(), i + 2);
             }
+            case SERVER_IP -> {
+                return pair(mc.getCurrentServerEntry() != null && mc.getCurrentServerEntry().address.equals(args.get(i + 1).toString()), i + 2);
+            }
         }
         return pair(false, 0);
     }
@@ -209,7 +212,8 @@ public class IfCmd extends ScriptCommand implements Global {
         EFFECT_AMPLIFIER,
         IN_GAME,
         PLAYING,
-        CHANCE_OF
+        CHANCE_OF,
+        SERVER_IP
     }
 
     /**
